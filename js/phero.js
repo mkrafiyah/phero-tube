@@ -34,10 +34,19 @@ const allClick = async (categoryId) => {
           noDataContainer.classList.add('hidden') 
      }
      cardData.forEach((data)=>{
+          let timeText = "";
+      if(data.others.posted_date){
+       const hour =  parseInt(data.others.posted_date/3600);
+       const minute = parseInt((data.others.posted_date % 3600) / 60);
+       timeText = hour + "hrs " + minute + "min " + "ago";
+       console.log(hour, minute)};
     const div = document.createElement('div');
     div.innerHTML = `
     <div class="card card-compact bg-base-100 shadow-xl">
-                <figure> <img class="h-56 w-80" src="${data?.thumbnail}"></figure>
+                <figure> <div class="relative h-56 w-80 "> <img class="h-56 w-80 " src="${data?.thumbnail}"></div>
+                <div class="text-xs text-white bg-black p-1 rounded-md absolute -mb-40 -mr-40">${timeText}</div>
+                </figure>
+                 
                 <div class="card-body">
                     <div class="flex  gap-4">
                     <img class="w-10 h-10 rounded-full" src="${data.authors[0].profile_picture}">
