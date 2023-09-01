@@ -62,6 +62,9 @@ const allClick = async (categoryId) => {
     cardContainer.appendChild(div);
      })
 };
+const blogBtn = () =>{
+     window.location.href = 'blog.html';
+}
 handleCategory();
 allClick('1000');
 
