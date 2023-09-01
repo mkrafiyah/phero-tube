@@ -40,13 +40,10 @@ const allClick = async (categoryId) => {
                 <figure> <img class="h-56 w-80" src="${data?.thumbnail}"></figure>
                 <div class="card-body">
                     <div class="flex  gap-4">
-                    
-                 
-                  <img class="w-10 h-10 rounded-full" src="${data.authors[0].profile_picture}">
+                    <img class="w-10 h-10 rounded-full" src="${data.authors[0].profile_picture}">
                  <div> <h2 class="card-title">${data.title}</h2> 
-                 <h3>${data.authors[0].profile_name}
-                
-                 </h3>
+                 <p class="inline">${data.authors[0].profile_name}<img class="w-5 inline" src="${data.authors[0].verified? "./images/verified.jpg" : ""}" alt="">
+                 </p>
                
                  <p>${data.others.views}</p>
                  </div>
@@ -62,6 +59,8 @@ const allClick = async (categoryId) => {
     cardContainer.appendChild(div);
      })
 };
+
+// blog answer
 const blogBtn = () =>{
      window.location.href = 'blog.html';
 }
