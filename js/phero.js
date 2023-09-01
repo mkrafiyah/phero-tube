@@ -9,7 +9,8 @@ const handleCategory = async() =>{
             
             const div = document.createElement('div');
             div.innerHTML = `
-            <a onclick = allClick('${data.category_id}') class="tab">${data.category}</a> 
+            <button class="btn bg-gray-300 gap-6 flex justify-around"><a onclick = allClick('${data.category_id}') class="tab">${data.category}</a></button>
+             
             `;
             tabContainer.appendChild(div);
         
@@ -17,12 +18,21 @@ const handleCategory = async() =>{
     
 };
 const allClick = async (categoryId) => {
+     console.log(categoryId)
      const response = await fetch(` https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
      const data = await response.json();
      const cardData =  data.data;
-     console.log(cardData)
+     console.log(cardData.length)
      const cardContainer = document.getElementById('card-container');
 
+     cardContainer.innerHTML = "";
+     // show nodata image
+     const noDataContainer = document.getElementById('no-data-container');
+     if(cardData.length === 0){
+      noDataContainer.classList.remove('hidden')
+     }else{
+          noDataContainer.classList.add('hidden') 
+     }
      cardData.forEach((data)=>{
     const div = document.createElement('div');
     div.innerHTML = `
@@ -34,7 +44,10 @@ const allClick = async (categoryId) => {
                  
                   <img class="w-10 h-10 rounded-full" src="${data.authors[0].profile_picture}">
                  <div> <h2 class="card-title">${data.title}</h2> 
-                 <p>${data.authors[0].profile_name}</p>
+                 <h3>${data.authors[0].profile_name}
+                
+                 </h3>
+               
                  <p>${data.others.views}</p>
                  </div>
                     </div>
@@ -45,8 +58,11 @@ const allClick = async (categoryId) => {
               </div>
     
     `;
+   
     cardContainer.appendChild(div);
      })
 };
 handleCategory();
+allClick('1000');
+
 
