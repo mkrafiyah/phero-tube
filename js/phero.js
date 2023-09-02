@@ -11,13 +11,12 @@ const handleCategory = async() =>{
             
             div.innerHTML = `
             <button class="btn bg-gray-300 gap-8 flex justify-between" onclick = allClick('${data.category_id}')><a>${data.category}</a></button>
-             
-            `;
-            tabContainer.appendChild(div);
-        
-          });   
+             `;
+             tabContainer.appendChild(div);
+            });   
     
 };
+//load data
 let cardData = [];
 const allClick = async (categoryId) => {
      console.log(categoryId)
