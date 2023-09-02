@@ -2,7 +2,7 @@ const handleCategory = async() =>{
     const response = await fetch(' https://openapi.programming-hero.com/api/videos/categories');
     const data = await response.json();
     const allData = data.data;
-    console.log(allData);
+    
    
     const tabContainer = document.getElementById('tab-container');
     allData.forEach((data) => {
@@ -19,11 +19,11 @@ const handleCategory = async() =>{
 //load data
 let cardData = [];
 const allClick = async (categoryId) => {
-     console.log(categoryId)
+     
      const response = await fetch(` https://openapi.programming-hero.com/api/videos/category/${categoryId}`);
      const data = await response.json();
      cardData =  data.data;
-     console.log(cardData.length)
+     
      const cardContainer = document.getElementById('card-container');
 
      cardContainer.innerHTML = "";
@@ -40,7 +40,7 @@ const allClick = async (categoryId) => {
        const hour =  parseInt(data.others.posted_date/3600);
        const minute = parseInt((data.others.posted_date % 3600) / 60);
        timeText = hour + "hrs " + minute + "min " + "ago";
-       console.log(hour, minute)};
+       };
     const div = document.createElement('div');
     div.innerHTML = `
     <div class="card card-compact bg-base-100 shadow-xl">
@@ -138,7 +138,7 @@ const noDataContainer = document.getElementById('no-data-container');
     sortingCard.appendChild(div);
      })
 
-console.log(cardData)
+
 }
 handleCategory();
 allClick('1000');
